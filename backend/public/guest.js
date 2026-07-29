@@ -22,7 +22,7 @@ const inferredTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UT
 
 const translations = {
   en: {
-    takePhoto: "Take Photo",
+    takePhoto: "Take new Photo",
     retake: "Cancel, Retake",
     delete: "Delete",
     photoViewer: "Photo viewer",
@@ -45,7 +45,7 @@ const translations = {
     openPhotoAria: "Open photo"
   },
   da: {
-    takePhoto: "Tag billede",
+    takePhoto: "Tag nyt billede",
     retake: "Fotryd, prøv igen",
     delete: "Slet",
     photoViewer: "Billedevisning",
