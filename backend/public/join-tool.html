@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Join Link Tool</title>
+    <link rel="stylesheet" href="/public/join-tool.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card">
+        <h1>Join Link + QR</h1>
+        <p class="sub">Generate a guest URL, NFC payload text, and printable QR code.</p>
+
+        <label for="eventId">Event ID</label>
+        <input id="eventId" type="text" value="sample-event" />
+
+        <label for="token">Token</label>
+        <input id="token" type="text" placeholder="long-lived-event-token" />
+
+        <label for="baseUrl">Guest Base URL</label>
+        <input id="baseUrl" type="text" />
+
+        <label for="joinUrl">Join URL</label>
+        <textarea id="joinUrl" rows="3" readonly></textarea>
+
+        <label for="nfcPayload">NFC Payload (URI)</label>
+        <textarea id="nfcPayload" rows="3" readonly></textarea>
+
+        <div class="actions">
+          <button id="copyJoinBtn" type="button">Copy Join URL</button>
+          <button id="copyNfcBtn" type="button" class="secondary">Copy NFC Payload</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>QR Code</h2>
+        <img id="qrImg" alt="Join URL QR code" />
+        <div class="actions">
+          <a id="downloadLink" href="#" download="party-album-join-qr.svg">Download SVG</a>
+          <button id="printBtn" type="button" class="secondary">Print</button>
+        </div>
+      </section>
+
+      <p id="status" class="status" aria-live="polite"></p>
+    </main>
+
+    <script type="module" src="/public/join-tool.js"></script>
+  </body>
+</html>

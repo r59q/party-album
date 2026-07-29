@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Party Album Guest</title>
+    <link rel="stylesheet" href="/public/guest.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card">
+        <div class="actions">
+          <button id="pickBtn" type="button">Take Photo</button>
+        </div>
+
+        <input id="fileInput" type="file" accept="image/*" capture="environment" hidden />
+
+        <div id="previewWrap" class="preview hidden">
+          <img id="previewImg" alt="Selected photo preview" />
+          <div class="actions">
+            <button id="retakeBtn" type="button" class="secondary">Retake</button>
+            <button id="cancelBtn" type="button" class="secondary">Cancel</button>
+          </div>
+        </div>
+
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <div id="timeline" class="timeline"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/public/guest.js"></script>
+  </body>
+</html>

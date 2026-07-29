@@ -1,0 +1,107 @@
+:root {
+  --bg-a: #0b0f1a;
+  --bg-b: #17263f;
+  --frame: rgba(255, 255, 255, 0.08);
+  --text: rgba(255, 255, 255, 0.75);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(120vw 60vh at -10% -10%, #24416f, transparent 60%),
+    radial-gradient(110vw 55vh at 110% 0%, #3f2f6f, transparent 58%),
+    linear-gradient(135deg, var(--bg-a), var(--bg-b));
+  color: var(--text);
+}
+
+.stage {
+  width: 100%;
+  height: 100%;
+  padding: 1.2vmin;
+  display: grid;
+}
+
+.stream {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 1vmin;
+  align-content: start;
+  overflow: auto;
+  padding-right: 0.2vmin;
+}
+
+.hour-group {
+  display: grid;
+  gap: 0.7vmin;
+}
+
+.hour-group h2 {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.3vw, 1.25rem);
+  font-weight: 650;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-auto-rows: 120px;
+  gap: 0.8vmin;
+  align-content: start;
+}
+
+.tile {
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--frame);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  transform: translateZ(0);
+}
+
+.tile:nth-child(5n + 1) {
+  grid-row: span 2;
+}
+
+.tile:nth-child(9n + 3) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: saturate(1.05);
+}
+
+.empty {
+  place-self: center;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  letter-spacing: 0.02em;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (orientation: portrait) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-auto-rows: 100px;
+  }
+}
