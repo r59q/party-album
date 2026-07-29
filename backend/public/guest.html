@@ -10,16 +10,17 @@
     <main class="app">
       <section class="card">
         <div class="actions">
-          <button id="pickBtn" type="button">Take Photo</button>
+          <button id="pickBtn" type="button" data-i18n="takePhoto">Take Photo</button>
         </div>
 
         <input id="fileInput" type="file" accept="image/*" capture="environment" hidden />
 
         <div id="previewWrap" class="preview hidden">
+          <div class="celebration-layer" aria-hidden="true"></div>
           <img id="previewImg" alt="Selected photo preview" />
           <div class="actions">
-            <button id="retakeBtn" type="button" class="secondary">Retake</button>
-            <button id="cancelBtn" type="button" class="secondary">Cancel</button>
+            <button id="retakeBtn" type="button" class="secondary" data-i18n="retake">Retake</button>
+            <button id="cancelBtn" type="button" class="secondary" data-i18n="delete">Delete</button>
           </div>
         </div>
 
@@ -30,6 +31,18 @@
         <div id="timeline" class="timeline"></div>
       </section>
     </main>
+
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <div class="lightbox-card">
+        <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Close photo viewer">×</button>
+        <div class="lightbox-nav">
+          <button id="lightboxPrev" class="lightbox-btn" type="button" aria-label="Previous photo">←</button>
+          <img id="lightboxImg" alt="Enlarged event photo" />
+          <button id="lightboxNext" class="lightbox-btn" type="button" aria-label="Next photo">→</button>
+        </div>
+        <p id="lightboxMeta" class="lightbox-meta"></p>
+      </div>
+    </div>
 
     <script type="module" src="/public/guest.js"></script>
   </body>

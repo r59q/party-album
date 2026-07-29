@@ -52,6 +52,8 @@ button {
   font-size: 1.06rem;
   font-weight: 600;
   flex: 1 1 220px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 button.secondary {
@@ -65,6 +67,7 @@ button[disabled] {
 
 .preview {
   margin-top: 14px;
+  position: relative;
 }
 
 .preview img {
@@ -74,6 +77,39 @@ button[disabled] {
   border: 1px solid var(--border);
   border-radius: 12px;
   background: #eef2fb;
+  position: relative;
+  z-index: 1;
+}
+
+.celebration-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.celebration-piece {
+  position: absolute;
+  bottom: -24px;
+  font-size: 1.35rem;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
+  animation: celebrate-burst var(--duration) ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes celebrate-burst {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift), -140px, 0) scale(1.15);
+    opacity: 0;
+  }
 }
 
 .hidden {
@@ -93,6 +129,78 @@ button[disabled] {
 .timeline {
   display: grid;
   gap: 12px;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(6, 14, 30, 0.84);
+  overscroll-behavior: contain;
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+.lightbox-card {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: 90vh;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.lightbox-nav img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+  touch-action: manipulation;
+}
+
+.lightbox-btn,
+.lightbox-close {
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+  border-radius: 999px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 10px 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  z-index: 2;
+}
+
+.lightbox-meta {
+  margin: 0;
+  color: #f2f5ff;
+  font-size: 0.95rem;
 }
 
 .hour-group h3 {
@@ -117,6 +225,15 @@ button[disabled] {
   border-radius: 10px;
   overflow: hidden;
   background: #fff;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.photo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(20, 31, 58, 0.12);
 }
 
 .photo img {
@@ -145,5 +262,22 @@ button[disabled] {
     width: 100%;
     min-height: 60px;
     font-size: 1.1rem;
+  }
+
+  .lightbox {
+    padding: 12px;
+  }
+
+  .lightbox-nav {
+    gap: 8px;
+  }
+
+  .lightbox-close {
+    top: 8px;
+    right: 8px;
+  }
+
+  .photo {
+    min-height: 128px;
   }
 }

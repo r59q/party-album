@@ -283,7 +283,7 @@ app.get("/events/:eventId/photos/timeline", async (req, res) => {
 
   const photos = await getEventPhotos(eventId);
   const visiblePhotos = photos.filter((photo) => photo.moderationStatus === "visible");
-  const ordered = visiblePhotos.sort((a, b) => a.uploadedAt.localeCompare(b.uploadedAt));
+  const ordered = visiblePhotos.sort((a, b) => b.uploadedAt.localeCompare(a.uploadedAt));
 
   const groups = new Map<string, PhotoRecord[]>();
   for (const photo of ordered) {
